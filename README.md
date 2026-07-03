@@ -38,9 +38,13 @@ The pipeline has two parts:
 │   ├── 10_sensitivity_gbmt_complete_case.R
 │   └── 11_sensitivity_lme_complete_case.R
 ├── data/                               # input data (not provided — see data/README.md)
-├── models/                            # cached fitted models (created at runtime)
-├── output/                            # results, tables, figures (created at runtime)
-├── install_packages.R                 # one-off dependency installer
+├── models/                             # cached fitted models (created at runtime)
+├── output/                             # results, tables, figures (created at runtime)
+├── install_packages.R                  # one-off dependency installer
+├── sessionInfo.txt                     # exact R/OS/package versions used
+├── packages.tsv                        # tab-separated package version table
+├── CITATION.cff                        # citation metadata (fill in on publication)
+├── LICENSE                             # MIT
 └── README.md
 ```
 
@@ -77,12 +81,49 @@ All other scripts are independent given the input data.
 
 The individual-level patient data are not included in this repository. The
 expected input files and their columns are documented in
-[`data/README.md`](data/README.md). Data may be available from the corresponding
-author on reasonable request, subject to institutional and ethics approvals.
+[`data/README.md`](data/README.md). The dataset used and/or analysed during
+the current study is available from the corresponding author on reasonable
+request.
 
-## Notes on reproducibility
+## Ethics approval
 
-- Random seeds are set where results depend on stochastic procedures (MICE
-  imputation, GBMT, Stan sampling).
-- File paths are relative placeholders; substitute your own data files following
-  the data dictionary.
+In accordance with local laws and regulations, the Institutional Ethics
+Committee of The First Affiliated Hospital of Nanchang University and Jinling
+Hospital, Affiliated Hospital of Medical School, Nanjing University, after
+reviewing the design of the study and the anonymised research dataset,
+authorised its implementation. The study was conducted in line with the
+Declaration of Helsinki and adhered to the STROBE reporting guidelines.
+
+## Funding
+
+This work was supported by the National Natural Science Foundation of China
+(No. 82370661, No. 81960128); the Double-Thousand Plan of Jiangxi Province
+(No. jxsc2019201028); the Jiangxi Medicine Academy of Nutrition and Health
+Management (No. 2022-PYXM-01); the Science and Technology Innovation Team
+Cultivation Project of the First Affiliated Hospital of Nanchang University
+(YFYKCTDPY202202); the Project for Academic and Technical Leaders of Major
+Disciplines in Jiangxi Province (20243BCE51144); and the Jiangxi Provincial
+Natural Science Foundation (20242BAB25438).
+
+## Reproducibility
+
+- Random seeds are set for all stochastic procedures (MICE imputation, GBMT,
+  Stan sampling).
+- The exact R version, OS, locale, and full package versions used to develop
+  and validate this code are recorded in [`sessionInfo.txt`](sessionInfo.txt)
+  and [`packages.tsv`](packages.tsv). Reproducing published results requires
+  matching these versions closely (in particular `brms`, which sanitises
+  factor level names differently across releases).
+- All input paths are relative placeholders; substitute your own data files
+  following the data dictionary in [`data/README.md`](data/README.md).
+
+## Citation
+
+If you use this code, please cite the associated publication and this
+software release; the citation metadata is provided in
+[`CITATION.cff`](CITATION.cff) (the author list, journal, and DOI are placed
+after acceptance).
+
+## License
+
+Released under the MIT License — see [`LICENSE`](LICENSE).
