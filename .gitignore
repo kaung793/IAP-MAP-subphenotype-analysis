@@ -1,0 +1,18 @@
+# Data — never commit patient-level data
+data/*.csv
+data/*.xlsx
+data/*.xls
+!data/README.md
+
+# Runtime outputs and cached models
+output/
+models/*.rds
+!models/README.md
+
+# R session artefacts
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+Rplots.pdf
+*.Rproj
